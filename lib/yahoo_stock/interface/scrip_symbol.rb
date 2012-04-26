@@ -47,7 +47,7 @@ module YahooStock
     end
     # returns only the text among two points
     def text_range
-      body = get.gsub!(/\s*/,'')
+      body = get.gsub!(/[\n\r]+/,'')
       pattern = /#{@before_element}.*#{@after_element}/
       results = pattern.match(body)
       return results[0] if results
